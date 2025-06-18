@@ -16,7 +16,7 @@ const BoardListSidebar = ({ boards, setBoards, onSelect , setSelectedBoard }) =>
       const res = await fetch(`${api_url}boards`);
       const data = await res.json();
       setBoards(data);
-      if (setSelectedBoard) setSelectedBoard(null); // <-- Clear selected board
+      if (setSelectedBoard) setSelectedBoard(null); 
     } finally {
       setLoading(false);
       setShowToast(false);
@@ -79,7 +79,6 @@ const BoardListSidebar = ({ boards, setBoards, onSelect , setSelectedBoard }) =>
         )}
       </div>
 
-      {/* Custom Toast/Notification */}
       <div
         className={`toast align-items-center text-bg-danger border-0 position-fixed end-0 top-0 m-4 shadow-lg ${showToast ? 'show' : ''}`}
         role="alert"

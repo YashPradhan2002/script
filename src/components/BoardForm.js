@@ -27,8 +27,7 @@ function BoardFormModal({ onClose, onRefresh }) {
   const modalContent= (
     <div className="modal fade show d-block"  style={{
         background: 'rgba(0,0,0,0.5)',
-        zIndex: 12000, // much higher than cards
-        position: 'fixed', // ensures overlay is above all content
+        position: 'fixed', 
         top: 0,
         left: 0,
         width: '100vw',

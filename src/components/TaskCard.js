@@ -8,10 +8,10 @@ const priorityColors = {
 
 const TaskCard = ({ task, onDelete, onClick, isDetail, onClose, onEdit }) => {
   if (isDetail) {
-    // Helper to convert status to camel case with spaces
+
     const formatStatus = (status) => {
       if (!status) return '';
-      // Insert space before capital letters, then capitalize first letter
+
       return status
       .replace(/([A-Z])/g, ' $1')
       .replace(/^./, str => str.toUpperCase())

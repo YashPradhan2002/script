@@ -12,7 +12,7 @@ function TaskFormModal({ boardId, onClose, onRefresh, task }) {
   });
   const [loading, setLoading] = useState(false);
 
-  // Fetch task details if editing
+
   useEffect(() => {
     if (task && task.id) {
       setLoading(true);
@@ -30,7 +30,7 @@ function TaskFormModal({ boardId, onClose, onRefresh, task }) {
         })
         .finally(() => setLoading(false));
     } else if (task) {
-      // If task object is passed directly (already loaded)
+
       setForm({
         title: task.title || '',
         description: task.description || '',
@@ -51,14 +51,14 @@ function TaskFormModal({ boardId, onClose, onRefresh, task }) {
     setLoading(true);
     try {
       if (task && task.id) {
-        // Update existing task
+        
         await fetch(`${api_url}tasks/${task.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form)
         });
       } else {
-        // Create new task
+   
         await fetch(`${api_url}boards/${boardId}/tasks`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

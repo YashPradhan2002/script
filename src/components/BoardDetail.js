@@ -12,7 +12,7 @@ function BoardDetail({ board }) {
   const [selectedTask, setSelectedTask] = useState(null);
   const [showEditForm, setShowEditForm] = useState(false);
 
-    const handleDeleteTask = async () => {
+  const handleDeleteTask = async () => {
     if (!selectedTask) return;
     try {
       await axios.delete(`${api_url}tasks/${selectedTask.id}`);
@@ -23,11 +23,9 @@ function BoardDetail({ board }) {
     }
   };
 
-  // Edit handler for modal
   const handleEditTask = () => {
     setShowEditForm(true);
   };
-  
 
   const statuses = [
     { id: 'todo', label: 'To Do' },
@@ -176,6 +174,7 @@ function BoardDetail({ board }) {
                           .map((task) => {
                             // Find the index of the task in the full groupedTasks[id] array for Draggable index
                             const fullIndex = groupedTasks[id].findIndex((t) => t.id === task.id);
+                            
                             return (
                               <Draggable key={task.id} draggableId={task.id} index={fullIndex}>
                                 {(provided, snapshot) => (
@@ -195,10 +194,10 @@ function BoardDetail({ board }) {
                                         {task.priority && (
                                           <span
                                             className={`badge me-2
-                                      ${task.priority === 'High' ? 'bg-danger' : ''}
-                                      ${task.priority === 'Medium' ? 'bg-warning text-dark' : ''}
-                                      ${task.priority === 'Low' ? 'bg-success' : ''}
-                                    `}
+${task.priority === 'High' ? 'bg-danger' : ''}
+${task.priority === 'Medium' ? 'bg-warning text-dark' : ''}
+${task.priority === 'Low' ? 'bg-success' : ''}
+`}
                                             style={{ fontSize: '0.75em' }}
                                           >
                                             {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
